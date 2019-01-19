@@ -7,7 +7,7 @@ class RoomList extends Component{
     this.state = {
       rooms: [],
     };
-    this.roomsRef = this.props.firebase.database().ref('rooms');
+    this.roomsRef = this.props.firebase.database().ref('rooms')
   }
 
   componentDidMount() {
@@ -18,19 +18,41 @@ class RoomList extends Component{
   });
 
 }
+
+handleChange(e){
+  this.setState({newRoomName: e.target.value});
+}
+
+
+  newRoom(newRoomName){
+    this.roomsRef.push({
+      name: newRoomName
+    });
+  }
+
   render(){
     return (
-      <div className = "App">
-        <ul>
-            {this.state.rooms.map((room,index) =>
-              <li className = "room" key = {index} >
-                {room.name}
-              </li>)
-            }
-        </ul>
-      </div>
-      
+      <React.Fragment>
 
+        <div className = "App">
+          <h2 className= "room-list-head">Current Rooms:</h2>
+          <ul className = "room-list">
+              {this.state.rooms.map((room,index) =>
+                <li className = "room" key = {index} > {room.name}
+                </li>)
+              }
+          </ul>
+        </div>
+
+        <div className = "newRoomForm">
+          <h2 className = "form-header">Create new form:</h2>
+            <form onSubmit={e => { e.preventDefault(); this.newRoom(this.state.newRoomName);}}>
+           <input type = "text" id= "roomName" value = {this.state.newRoomName} onChange = { (e) => this.handleChange(e) } />
+           <input type = "submit" />
+          </form>
+        </div>
+
+      </React.Fragment>
       )
     }
   }
