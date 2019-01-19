@@ -14,10 +14,6 @@ import RoomList from './components/RoomList';
   };
   firebase.initializeApp(config);
 
-  handleSubmit(e){
-
-  }
-
 class App extends Component {
   render() {
     return (
