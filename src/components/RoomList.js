@@ -28,6 +28,9 @@ handleChange(e){
     this.roomsRef.push({
       name: newRoomName
     });
+    this.setState({
+      newRoomName:'' 
+    });
   }
 
   render(){
@@ -46,7 +49,8 @@ handleChange(e){
 
         <div className = "newRoomForm">
           <h2 className = "form-header">Create new form:</h2>
-            <form onSubmit={e => { e.preventDefault(); this.newRoom(this.state.newRoomName);}}>
+           <form id = "chatroomForm" onSubmit={
+             e => { e.preventDefault(); this.newRoom(this.state.newRoomName);}}>
            <input type = "text" id= "roomName" value = {this.state.newRoomName} onChange = { (e) => this.handleChange(e) } />
            <input type = "submit" />
           </form>
