@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import App from "./../App";
 
 class RoomList extends Component{
   constructor(props){
@@ -19,16 +20,20 @@ class RoomList extends Component{
 
 }
 
-handleChange(e){
-  this.setState({newRoomName: e.target.value});
-}
+  handleChange(e){
+    this.setState({newRoomName: e.target.value});
+  }
 
 
   newRoom(newRoomName){
     this.roomsRef.push({
       name: newRoomName
     });
+    this.setState({
+      newRoomName:''
+    });
   }
+
 
   render(){
     return (
@@ -38,16 +43,26 @@ handleChange(e){
           <h2 className= "room-list-head">Current Rooms:</h2>
           <ul className = "room-list">
               {this.state.rooms.map((room,index) =>
-                <li className = "room" key = {index} > {room.name}
+                <li
+                className = "room"
+                key = {index}
+                onClick={() => this.props.setActiveRoom(room)} >
+                Room Name: {room.name}
                 </li>)
               }
           </ul>
         </div>
 
         <div className = "newRoomForm">
-          <h2 className = "form-header">Create new form:</h2>
-            <form onSubmit={e => { e.preventDefault(); this.newRoom(this.state.newRoomName);}}>
-           <input type = "text" id= "roomName" value = {this.state.newRoomName} onChange = { (e) => this.handleChange(e) } />
+          <h2 className = "form-header">Create new room:</h2>
+           <form
+           id = "chatroomForm"
+           onSubmit={ e => { e.preventDefault(); this.newRoom(this.state.newRoomName);}}>
+           <input
+           type = "text"
+           id= "roomName"
+           value = {this.state.newRoomName}
+           onChange = { (e) => this.handleChange(e) }/>
            <input type = "submit" />
           </form>
         </div>
