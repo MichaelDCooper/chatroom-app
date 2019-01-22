@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import App from "./../App";
 
 class RoomList extends Component{
   constructor(props){
@@ -19,9 +20,9 @@ class RoomList extends Component{
 
 }
 
-handleChange(e){
-  this.setState({newRoomName: e.target.value});
-}
+  handleChange(e){
+    this.setState({newRoomName: e.target.value});
+  }
 
 
   newRoom(newRoomName){
@@ -29,9 +30,14 @@ handleChange(e){
       name: newRoomName
     });
     this.setState({
+<<<<<<< HEAD
       newRoomName:'' 
+=======
+      newRoomName:''
+>>>>>>> checkpoint-messagelist
     });
   }
+
 
   render(){
     return (
@@ -41,17 +47,33 @@ handleChange(e){
           <h2 className= "room-list-head">Current Rooms:</h2>
           <ul className = "room-list">
               {this.state.rooms.map((room,index) =>
-                <li className = "room" key = {index} > {room.name}
+                <li
+                className = "room"
+                key = {index}
+                onClick={() => this.props.setActiveRoom(room)} >
+                Room Name: {room.name}
                 </li>)
               }
           </ul>
         </div>
 
         <div className = "newRoomForm">
+<<<<<<< HEAD
           <h2 className = "form-header">Create new form:</h2>
            <form id = "chatroomForm" onSubmit={
              e => { e.preventDefault(); this.newRoom(this.state.newRoomName);}}>
            <input type = "text" id= "roomName" value = {this.state.newRoomName} onChange = { (e) => this.handleChange(e) } />
+=======
+          <h2 className = "form-header">Create new room:</h2>
+           <form
+           id = "chatroomForm"
+           onSubmit={ e => { e.preventDefault(); this.newRoom(this.state.newRoomName);}}>
+           <input
+           type = "text"
+           id= "roomName"
+           value = {this.state.newRoomName}
+           onChange = { (e) => this.handleChange(e) }/>
+>>>>>>> checkpoint-messagelist
            <input type = "submit" />
           </form>
         </div>
