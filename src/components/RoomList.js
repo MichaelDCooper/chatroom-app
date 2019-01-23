@@ -52,7 +52,7 @@ class RoomList extends Component{
               }
           </ul>
         </div>
-        
+
         <div className = "newRoomForm">
           <h2 className = "form-header">Create new room:</h2>
            <form
