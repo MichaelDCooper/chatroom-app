@@ -19,16 +19,6 @@ class MessageList extends Component{
 
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-  render(){
-    return
-    }
-  }
-=======
-=======
-
->>>>>>> checkpoint-messagelist
 render() {
   return (
   <React.Fragment>
@@ -53,6 +43,5 @@ render() {
     )
   }
 }
->>>>>>> checkpoint-messagelist
 
 export default MessageList;
