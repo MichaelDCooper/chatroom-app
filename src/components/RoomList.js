@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import App from "./../App";
+
 
 class RoomList extends Component{
   constructor(props){

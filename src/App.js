@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import RoomList from './components/RoomList';
 import MessageList from './components/MessageList';
+import User from './components/User';
 import * as firebase from 'firebase';
 import './App.css';
 
@@ -21,7 +22,8 @@ class App extends Component {
 
     this.state = {
       activeRoom:null,
-      activeRoomId:''
+      activeRoomId:'',
+      currentUser:"Guest"
     };
   }
 
@@ -29,6 +31,10 @@ class App extends Component {
     this.setState({ activeRoom: selectedRoom.name});
     this.setState({ activeRoomId: selectedRoom.key});
   }
+
+  setUser = user => {
+  this.setState({ currentUser: user.displayName });
+};
 
   render() {
     return (
@@ -41,6 +47,10 @@ class App extends Component {
         setActiveRoom={this.setActiveRoom}
         activeRoom={this.state.activeRoom}
         activeRoomId={this.state.activeRoomId}/>
+        <User
+        firebase={firebase}
+        setUser = {this.state.setUser}
+        user={this.state.currentUser}/>
       </div>
     );
   }
