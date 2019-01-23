@@ -3,11 +3,6 @@ import RoomList from './components/RoomList';
 import MessageList from './components/MessageList';
 import * as firebase from 'firebase';
 import './App.css';
-<<<<<<< HEAD
-import RoomList from './components/RoomList';
-import MessageList from './components/MessageList';
-=======
->>>>>>> checkpoint-messagelist
 
 // Initialize Firebase
   var config = {

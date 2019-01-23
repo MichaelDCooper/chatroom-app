@@ -30,11 +30,7 @@ class RoomList extends Component{
       name: newRoomName
     });
     this.setState({
-<<<<<<< HEAD
       newRoomName:'' 
-=======
-      newRoomName:''
->>>>>>> checkpoint-messagelist
     });
   }
 
@@ -57,13 +53,12 @@ class RoomList extends Component{
           </ul>
         </div>
 
+
         <div className = "newRoomForm">
-<<<<<<< HEAD
           <h2 className = "form-header">Create new form:</h2>
            <form id = "chatroomForm" onSubmit={
              e => { e.preventDefault(); this.newRoom(this.state.newRoomName);}}>
            <input type = "text" id= "roomName" value = {this.state.newRoomName} onChange = { (e) => this.handleChange(e) } />
-=======
           <h2 className = "form-header">Create new room:</h2>
            <form
            id = "chatroomForm"
@@ -73,7 +68,6 @@ class RoomList extends Component{
            id= "roomName"
            value = {this.state.newRoomName}
            onChange = { (e) => this.handleChange(e) }/>
->>>>>>> checkpoint-messagelist
            <input type = "submit" />
           </form>
         </div>
