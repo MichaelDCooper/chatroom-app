@@ -22,7 +22,7 @@ class App extends Component {
 
     this.state = {
       activeRoom:null,
-      activeRoomId:'',
+      activeRoomId:'No Room Selected',
      currentUser:"Guest"
     };
   }
@@ -43,10 +43,11 @@ class App extends Component {
         setActiveRoom={this.setActiveRoom}
         activeRoom={this.state.activeRoom}
         firebase = {firebase}/>
-        <MessageList firebase = {firebase}
-        setActiveRoom={this.setActiveRoom}
+        <MessageList
+        firebase = {firebase}
         activeRoom={this.state.activeRoom}
-        activeRoomId={this.state.activeRoomId}/>
+        activeRoomId={this.state.activeRoomId}
+        user={this.state.currentUser}/>
         <User
         firebase={firebase}
         setUser = {this.setUser}

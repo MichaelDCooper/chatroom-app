@@ -37,7 +37,7 @@ class RoomList extends Component{
 
   render(){
     return (
-      <React.Fragment>
+      <div>
 
         <div className = "App">
           <h2 className= "room-list-head">Current Rooms:</h2>
@@ -68,7 +68,7 @@ class RoomList extends Component{
 
         </div>
 
-      </React.Fragment>
+      </div>
       )
     }
   }

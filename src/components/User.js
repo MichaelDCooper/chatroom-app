@@ -23,7 +23,7 @@ class User extends Component {
   }
   render(){
     return (
-      <React.Fragment>
+      <div>
         <div className = "App">
         <div>Current User: {this.props.user}</div>
           <button
@@ -44,7 +44,7 @@ class User extends Component {
           </button>
 
         </div>
-      </React.Fragment>
+      </div>
     )
   }
 }
