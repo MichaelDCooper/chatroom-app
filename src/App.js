@@ -23,7 +23,7 @@ class App extends Component {
     this.state = {
       activeRoom:null,
       activeRoomId:'No Room Selected',
-     currentUser:"Guest"
+     currentUser:""
     };
   }
 
@@ -33,7 +33,7 @@ class App extends Component {
   }
 
   setUser = user => {
-  this.setState({ currentUser: user.displayName });
+  this.setState({ currentUser: user });
 };
 
   render() {
