@@ -41,19 +41,21 @@ render() {
   <div>
     <div className = "App">
       <div className="activeRoom">
-        Active Room: {this.props.activeRoom}
+        <h4>Active Room: {this.props.activeRoom}</h4>
       </div>
+      <ul className = "list-group">
       {
       this.state.messages
         .filter(message => message.roomId === this.props.activeRoomId)
         .map((message, index) => (
           <div>
-            <p key = {index}>Room ID:{message.roomId}</p>
-            <p key = {index}>Username: {message.username}</p>
-            <p key = {index}>Message:{message.content}</p>
-            <p key = {index}>Time Sent: {message.sentAt}</p>
+            <li className = "list-group-item" key = {index}>Room ID:{message.roomId}</li>
+            <li className = "list-group-item" key = {index}>Username: {message.username}</li>
+            <li className = "list-group-item" key = {index}>Message:{message.content}</li>
+            <li className = "list-group-item" key = {index}>Time Sent: {message.sentAt}</li>
           </div>
         ))}
+        </ul>
       </div>
       <div className = "newMessageForm">
           <h2 className = "form-header">Create a new message:</h2>

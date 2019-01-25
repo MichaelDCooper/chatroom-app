@@ -41,10 +41,10 @@ class RoomList extends Component{
 
         <div className = "App">
           <h2 className= "room-list-head">Current Rooms:</h2>
-          <ul className = "room-list">
+          <ul className = "list-group">
               {this.state.rooms.map((room,index) =>
                 <li
-                className = "room"
+                className = "list-group-item"
                 key = {index}
                 onClick={() => this.props.setActiveRoom(room)} >
                 Room Name: {room.name}

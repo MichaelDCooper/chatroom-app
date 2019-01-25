@@ -39,6 +39,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <header id = "header">
+          <h1>Chatroom App</h1>
+        </header>
+        <section>
+
         <RoomList
         setActiveRoom={this.setActiveRoom}
         activeRoom={this.state.activeRoom}
@@ -52,6 +57,7 @@ class App extends Component {
         firebase={firebase}
         setUser = {this.setUser}
         user={this.state.currentUser}/>
+        </section>
       </div>
     );
   }
