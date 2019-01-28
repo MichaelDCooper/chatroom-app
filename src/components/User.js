@@ -25,24 +25,21 @@ class User extends Component {
     return (
       <div>
         <div className = "App">
-        <div>Current User: {this.props.user? this.props.user.displayName : " Guest"}</div>
+        <div>
+            Current User: {this.props.user? this.props.user.displayName : " Guest "}
           <button
-          className = "sign-in-button"
+          className = "btn btn-outline-dark btn-sm"
           type = "button"
-          onClick = {this.signInWithPopup}
-
-          >
-            Sign In!
+          onClick = {this.signInWithPopup}>
+            Sign In
           </button>
           <button
-          className = "sign-out-button"
+          className = "btn btn-outline-dark btn-sm"
           type = "button"
-          onClick = {this.signOutWithPopup}
-
-          >
-            Sign Out!
+          onClick = {this.signOutWithPopup}>
+            Sign Out
           </button>
-
+          </div>
         </div>
       </div>
     )

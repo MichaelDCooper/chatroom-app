@@ -21,8 +21,8 @@ class App extends Component {
     super(props);
 
     this.state = {
-      activeRoom:null,
-      activeRoomId:'No Room Selected',
+      activeRoom:"Select a Room",
+      activeRoomId:null,
      currentUser:""
     };
   }
@@ -39,24 +39,48 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Chatroom</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">
+                <User
+                firebase={firebase}
+                setUser = {this.setUser}
+                user={this.state.currentUser}/>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
         <header id = "header">
           <h1>Chatroom App</h1>
         </header>
-        <section>
 
-        <RoomList
-        setActiveRoom={this.setActiveRoom}
-        activeRoom={this.state.activeRoom}
-        firebase = {firebase}/>
-        <MessageList
-        firebase = {firebase}
-        activeRoom={this.state.activeRoom}
-        activeRoomId={this.state.activeRoomId}
-        user={this.state.currentUser}/>
-        <User
-        firebase={firebase}
-        setUser = {this.setUser}
-        user={this.state.currentUser}/>
+        <section className = "main">
+          <div className = "container">
+            <div className = "row">
+              <div className = "col-sm-6">
+                <RoomList
+                setActiveRoom={this.setActiveRoom}
+                activeRoom={this.state.activeRoom}
+                firebase = {firebase}/>
+              </div>
+              <div className = "col-sm-6">
+                <MessageList
+                firebase = {firebase}
+                activeRoom={this.state.activeRoom}
+                activeRoomId={this.state.activeRoomId}
+                user={this.state.currentUser}/>
+              </div>
+            </div>
+          </div>
         </section>
       </div>
     );
