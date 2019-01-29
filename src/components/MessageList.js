@@ -36,6 +36,14 @@ class MessageList extends Component{
     });
   }
 
+  deleteMessages(messageName) {
+    let currentRoom = this.state.currentRoom;
+    this.messagesRef.child(messageName.key).remove();
+    window.location.reload();
+    return this.state.currentRoom = currentRoom; 
+
+  }
+
 render() {
   return (
   <div>
@@ -53,6 +61,15 @@ render() {
             <li className = "list-group-item" key = {index}>Username: {message.username}</li>
             <li className = "list-group-item" key = {index}>Message:{message.content}</li>
             <li className = "list-group-item" key = {index}>Time Sent: {message.sentAt}</li>
+            <button
+            className = "btn btn-outline-dark btn-sm"
+            type = "button"
+            onClick={
+              e => {
+                this.deleteMessages(message);}
+              }>
+               Delete
+            </button>
           </div>
         ))}
         </ul>

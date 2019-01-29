@@ -20,6 +20,15 @@ class RoomList extends Component{
 
 }
 
+  componentWillUnmount() {
+    this.roomsRef.on('child_changed', snapshot =>{
+      const room = snapshot.val();
+      room.key = snapshot.key;
+      this.setState({rooms:this.state.rooms.concat(room)})
+    });
+  }
+
+
   handleChange(e){
     this.setState({newRoomName: e.target.value});
   }
@@ -34,11 +43,11 @@ class RoomList extends Component{
     });
   }
 
-deleteRoom(roomName) {
-  this.roomsRef.child(roomName.key).remove();
-  window.location.reload();
+  deleteRoom(roomName) {
+    this.roomsRef.child(roomName.key).remove();
+    // window.location.reload();
 
-}
+  }
 
 
   render(){
@@ -60,6 +69,7 @@ deleteRoom(roomName) {
                 key = {this.state.rooms.index}
                 onClick={
                   e => {
+                    e.preventDefault();
                     this.deleteRoom(room);}
                   }>
                    Delete
