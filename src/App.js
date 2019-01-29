@@ -22,7 +22,7 @@ class App extends Component {
 
     this.state = {
       activeRoom:"Select a Room",
-      activeRoomId:null,
+      activeRoomId:"",
      currentUser:""
     };
   }
@@ -70,6 +70,7 @@ class App extends Component {
                 <RoomList
                 setActiveRoom={this.setActiveRoom}
                 activeRoom={this.state.activeRoom}
+                activeRoomId={this.state.activeRoomId}
                 firebase = {firebase}/>
               </div>
               <div className = "col-sm-6">

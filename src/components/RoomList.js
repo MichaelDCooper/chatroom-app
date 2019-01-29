@@ -34,6 +34,12 @@ class RoomList extends Component{
     });
   }
 
+deleteRoom(roomName) {
+  this.roomsRef.child(roomName.key).remove();
+  window.location.reload();
+
+}
+
 
   render(){
     return (
@@ -48,7 +54,18 @@ class RoomList extends Component{
                 key = {index}
                 onClick={() => this.props.setActiveRoom(room)} >
                 Room Name: {room.name}
-                </li>)
+                <button
+                className = "btn btn-outline-dark btn-sm"
+                type = "button"
+                key = {this.state.rooms.index}
+                onClick={
+                  e => {
+                    this.deleteRoom(room);}
+                  }>
+                   Delete
+                </button>
+                </li>
+                )
               }
           </ul>
         </div>
