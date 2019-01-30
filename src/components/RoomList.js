@@ -20,15 +20,6 @@ class RoomList extends Component{
 
 }
 
-  componentWillUnmount() {
-    this.roomsRef.on('child_changed', snapshot =>{
-      const room = snapshot.val();
-      room.key = snapshot.key;
-      this.setState({rooms:this.state.rooms.concat(room)})
-    });
-  }
-
-
   handleChange(e){
     this.setState({newRoomName: e.target.value});
   }
@@ -45,7 +36,13 @@ class RoomList extends Component{
 
   deleteRoom(roomName) {
     this.roomsRef.child(roomName.key).remove();
-    // window.location.reload();
+    const newRooms = [];
+    this.state.rooms.map((room,index) => {
+      if (room.key != roomName.key){
+        newRooms.push(room);
+      }
+    });
+    this.setState({rooms:newRooms});
 
   }
 

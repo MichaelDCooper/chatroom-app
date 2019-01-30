@@ -36,11 +36,15 @@ class MessageList extends Component{
     });
   }
 
-  deleteMessages(messageName) {
-    let currentRoom = this.state.currentRoom;
+  deleteMessage(messageName) {
     this.messagesRef.child(messageName.key).remove();
-    window.location.reload();
-    return this.state.currentRoom = currentRoom; 
+    const newMessages = [];
+    this.state.messages.map((message,index) => {
+      if (message.key != messageName.key){
+        newMessages.push(message);
+      }
+    });
+    this.setState({messages:newMessages});
 
   }
 
@@ -64,9 +68,11 @@ render() {
             <button
             className = "btn btn-outline-dark btn-sm"
             type = "button"
+            key = {this.state.messages.index}
             onClick={
               e => {
-                this.deleteMessages(message);}
+                e.preventDefault();
+                this.deleteMessage(message);}
               }>
                Delete
             </button>
